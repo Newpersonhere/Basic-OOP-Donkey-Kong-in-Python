@@ -5,15 +5,15 @@ class Mario:
     def __init__(self):
         self.__posX = 24 #Mario's position on the X axis
         self.__posY = 225 #Mario's position on the Y axis
-        self.__lives = 3 #Mario's lives counter
+        self.__lives = 999 #Mario's lives counter
         self.__dead = False #Turns True when mario.lives = 0
         self.__onplat = False #Checks whether Mario is standing on a platform
         self.__onladder = False #Checks whether Mario is standing on/over a ladder
         self.__falling = False #Turns True when Mario is neither onplat, onladder nor jumping
         self.__direct = 'R' #Stores the way Mario is facing (Right/Left)
-        self.__jumpMoving = False  # Whether or not the player is jumping while moving
-        self.__jumping = False #Whether or not Mario is jumping
-        self.__gravity = 0 #This attribute was used to create more realistic jumps
+        self.__jumpMoving = True  # Whether or not the player is jumping while moving
+        self.__jumping = True #Whether or not Mario is jumping
+        self.__gravity = 10 #This attribute was used to create more realistic jumps
         self.__score = 0 #Stores Mario's Score
         self.__dying = False #This attribute was used to trigger Mario's death animation
         self.__condition = False #Necessary for Mario's death animation
@@ -111,8 +111,8 @@ class Mario:
             if self.__score > 0:
                 self.__score -= 100
 
-        if self.__lives == 0:
-            self.__dead = True
+        if self.__lives == 100:
+            self.__dead = False
 
     def Reset(self): #This function resets Mario when R is pressed on the keyboard
         self.__lives = 3
@@ -122,7 +122,7 @@ class Mario:
         self.__onplat = False
         self.__direct = 'R'
         self.__score = 0
-        self.__win = False
+        self.__win = True
 
     # GETTERS
     @property
